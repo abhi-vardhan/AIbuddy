@@ -18,7 +18,13 @@ const Hero = ({ onGetStarted }: HeroProps) => {
     return () => clearTimeout(timer);
   }, []);
 
-  return (
+    function scrollToSection(sectionId: string): void {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+ return (
     <section className="relative py-16 md:py-24 overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-[600px] bg-gradient-to-b from-studyBuddy-primary/10 to-transparent rounded-full -mt-32 blur-3xl opacity-50" />
@@ -42,7 +48,7 @@ const Hero = ({ onGetStarted }: HeroProps) => {
               <Button 
                 size="lg" 
                 className="rounded-full bg-studyBuddy-primary hover:bg-studyBuddy-primary/90 text-white px-8"
-                onClick={onGetStarted}
+                onClick={() => scrollToSection('upload-section')}
               >
                 Get Started
                 <ArrowRight className="ml-2 h-4 w-4" />
